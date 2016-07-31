@@ -7,14 +7,127 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
+      <div>
+     <nav class="navbar navbar-fixed-top navbar-light navbar-inverse" style="background-color: #023240;">
+       <div class="navbar-header">
+         <h3 style="color: white; margin-left:20px;">Recipe House</h3>
+       </div>
+       <ul class="nav navbar-nav navbar-right">
+        <li class="user-info">
+          <a href="#" class="user-email"></a>
+        </li>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+         <li class="dropdown signUp">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b> Sign Up</b> <span class="caret"></span></a>
+           <ul class="dropdown-menu auth-dp">
+             <li>
+              <div class="row">
+                 <div class="col-md-12">
+                    <form class="form" role="form" accept-charset="UTF-8" id="sign-up">
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                          <input type="text" class="form-control" id="sign-up-email" name="credentials[email]" placeholder="Email address" required>
+                       </div>
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputPassword2">Password</label>
+                          <input type="password" class="form-control" id="sign-up-pw" name="credentials[password]" placeholder="Password" required>
+                       </div>
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputPassword2">Retype password</label>
+                          <input type="password" class="form-control" id="sign-up-pw-retype" name="credentials[password_confirmation]" placeholder="Retype password" required>
+                          <!-- <input type="hidden" class="form-control" id="profile-input" name="credentials[profile_attributes]"> -->
+                       </div>
+                       <div class="retype-error" style="display:none; border:none; text-align: center;">
+                         Passwords don't match!
+                       </div>
+                       <div class="fail-message" style="display:none; border:none; text-align: center;">
+                         User-name exist!
+                       </div>
+                       <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+            </li>
+           </ul>
+         </li>
+
+         <li class="dropdown signIn">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span><b> Log In</b> <span class="caret"></span></a>
+           <ul class="dropdown-menu auth-dp">
+             <li>
+              <div class="row">
+                 <div class="col-md-12">
+                    <form class="form" role="form" accept-charset="UTF-8" id="sign-in">
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                          <input type="text" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Email address" required>
+                       </div>
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputPassword2">Password</label>
+                          <input type="password" class="form-control" id="sign-in-pw" name="credentials[password]" placeholder="Password" required>
+                       </div>
+                       <div class="fail-message" style="display:none; border:none; text-align: center;">
+                         User-name/Password Invalid!
+                       </div>
+                       <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+            </li>
+           </ul>
+         </li>
+
+         <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><b> Change Password</b> <span class="caret"></span></a>
+           <ul class="dropdown-menu auth-dp">
+             <li>
+              <div class="row">
+                 <div class="col-md-12">
+                    <form class="form" role="form" accept-charset="UTF-8" id="change-password">
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputEmail2">Old password</label>
+                          <input class="form-control" type="password" id="old-pw" name="passwords[old]" placeholder="Old password" required>
+                       </div>
+                       <div class="form-group">
+                          <label class="sr-only" for="exampleInputPassword2">New password</label>
+                          <input type="password" class="form-control" id="new-pw" name="passwords[new]" placeholder="New password" required>
+                       </div>
+                       <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+                       </div>
+                    </form>
+                 </div>
+              </div>
+            </li>
+           </ul>
+         </li>
+
+         <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-out"></span><b> Sign Out</b> <span class="caret"></span></a>
+           <ul class="dropdown-menu auth-dp">
+             <li>
+              <div class="row">
+                 <div class="col-md-12">
+                    <form class="form" role="form" accept-charset="UTF-8" id="sign-out">
+                      <div class="col-md-12" style="margin-bottom:3%;">
+                        Do you want to visit my site again?
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Definitely!!!</button>
+                      </div>
+                    </form>
+                 </div>
+              </div>
+            </li>
+           </ul>
+         </li>
+     </ul>
+    </nav>
+
+
     </body>
 </html>

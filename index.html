@@ -7,7 +7,7 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <div>
+      <!-- <div> -->
      <nav class="navbar navbar-fixed-top navbar-light navbar-inverse" style="background-color: #023240;">
        <div class="navbar-header">
          <h3 style="color: white; margin-left:20px;">Recipe House</h3>
@@ -15,6 +15,15 @@
        <ul class="nav navbar-nav navbar-right">
         <li class="user-info">
           <a href="#" class="user-email"></a>
+        </li>
+
+        <li>
+          <button type="button" class="btn btn-primary user-toggle">User</button>
+            <!-- <button type="button" class="btn btn-primary make-recipe-button">Make Recipe</button> -->
+        </li>
+        <li>
+          <button type="button" class="btn btn-primary home-toggle">Home</button>
+            <!-- <button type="button" class="btn btn-primary make-recipe-button">Make Recipe</button> -->
         </li>
 
          <li class="dropdown signUp">
@@ -124,9 +133,158 @@
             </li>
            </ul>
          </li>
+
+
      </ul>
     </nav>
 
+    <div class="content">
+
+
+    <div class="home-recipe-content">
+     <div>
+      <div class="col-sm-2 sidebar-content">
+       <nav class="nav-sidebar">
+        <h4>Category</h4>
+        	<ul class="nav tabs">
+            <li><a href="#tab1" data-toggle="tab">Grill</a></li>
+            <li><a href="#tab2" data-toggle="tab">Fry</a></li>
+            <li><a href="#tab3" data-toggle="tab">Bake</a></li>
+            <li><a href="#tab4" data-toggle="tab">Stir-Fry</a></li>
+            <li><a href="#tab5" data-toggle="tab">Steam</a></li>
+            <li><a href="#tab6" data-toggle="tab" id="favorite-tab">Favorite Collection</a></li>
+          </ul>
+       </nav>
+      </div>
+      <!-- tab content -->
+      <div class="tab-content">
+       <div class="tab-pane text-style" id="tab1">
+         <h2>Grill Recipe</h2>
+         <hr>
+         <div class="grill-recipe-content col-md-12 home-content">
+         </div>
+       </div>
+       <div class="tab-pane text-style" id="tab2">
+         <h2>Fry Recipe</h2>
+         <hr>
+         <div class="fry-recipe-content col-md-12 home-content">
+         </div>
+       </div>
+       <div class="tab-pane text-style" id="tab3">
+         <h2>Bake Recipe</h2>
+         <hr>
+         <div class="bake-recipe-content col-md-12 home-content">
+         </div>
+      </div>
+      <div class="tab-pane text-style" id="tab4">
+        <h2>Stir-Fry Recipe</h2>
+        <hr>
+        <div class="stir-fry-recipe-content col-md-12 home-content">
+        </div>
+     </div>
+     <div class="tab-pane text-style" id="tab5">
+       <h2>Steam Recipe</h2>
+       <hr>
+       <div class="steam-recipe-content col-md-12 home-content">
+       </div>
+    </div>
+    <div class="tab-pane text-style" id="tab6">
+      <h2>Your Favorite Recipe~!</h2>
+      <hr>
+      <div class="favorite-recipe-content col-md-12 home-content">
+      </div>
+   </div>
+     </div>
+    </div>
+  </div>
+
+
+
+        <div class="user-choice hidden">
+          <button type="button" class="btn btn-primary make-recipe-button">Make Recipe</button>
+          <button type="button" class="btn btn-primary check-recipe-button">Check your Recipe</button>
+        </div>
+
+        <div class="panel panel-primary make-recipe-div hidden">
+         <div class="panel-heading">
+             <h3 class="panel-title">
+                 <span class="glyphicon glyphicon-bookmark"></span> Add your Favorite Recipe!</h3>
+         </div>
+         <div class="panel-body">
+          <form id="recipe-fillout">
+            <fieldset>
+                <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
+                <input class="input-field" type="text" name="recipe[category]" placeholder="cooking method">
+                <div id="instructions-input">
+                  <input class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"><br >
+                </div>
+                <div id="ingredients-input">
+                  <input class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"><br >
+                </div>
+                <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit">
+              </fieldset>
+          </form>
+          <input class="btn btn-success" id="add-another-step" type="button" name="addstep" value="Add another instruction step">
+          <input class="btn btn-success" id="add-another-ingredient" type="button" name="addingredient" value="Add another ingredient">
+        </div>
+       </div>
+
+       <div class="user-recipe-content col-md-12 hidden">
+       </div>
+
+       <!-- <div class="home-recipe-content col-md-12 hidden">
+       </div> -->
+       <!-- <div>
+           <div class="lala">
+              <form class="form" id="edit-recipe-content">
+                 <div class="form-group col-md-6">
+                   <label class="sr-only" for="exampleInputEmail2">Flight Number</label>
+                   <input class="form-control input-field" type="text" name="flights[flight_number]" placeholder="flight number" required>
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label class="sr-only" for="exampleInputEmail2">Departure Date</label>
+                    <input class="form-control input-field" type="date" name="flights[departure_date]" placeholder="departure date" required>
+                </div>
+                <div class="form-group col-md-6">
+                   <label class="sr-only" for="exampleInputEmail2">Departure Time</label>
+                   <input class="form-control input-field" type="text" name="flights[departure_time]" placeholder="departure time" required>
+                </div>
+                <div class="form-group col-md-6">
+                   <label class="sr-only" for="exampleInputEmail2">Departure</label>
+                   <input class="form-control input-field" type="text" name="flights[departure]" placeholder="departure" required>
+                </div>
+                <div class="form-group col-md-6">
+                   <label class="sr-only" for="exampleInputEmail2">Arrival Date</label>
+                   <input class="form-control input-field" type="date" name="flights[arrival_date]" placeholder="arrival date" required>
+                </div>
+                <div class="form-group col-md-6">
+                   <label class="sr-only" for="exampleInputEmail2">Arrival Time</label>
+                   <input class="form-control input-field" type="text" name="flights[arrival_time]" placeholder="arrival time" required>
+                </div>
+                <div class="form-group col-md-6">
+                   <label class="sr-only" for="exampleInputEmail2">Arrival</label>
+                   <input class="form-control input-field" type="text" name="flights[arrival]" placeholder="arrival" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="sr-only" for="exampleInputEmail2">Arrival Place Zipcode</label>
+                  <input class="form-control input-field" type="text" name="flights[arrival_zipcode]" placeholder="arrival zipcode" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="sr-only" for="exampleInputEmail2">Gate</label>
+                  <input class="form-control input-field" type="text" name="flights[gate]" placeholder="gate" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="sr-only" for="exampleInputEmail2">Terminal</label>
+                  <input class="form-control input-field" type="text" name="flights[terminal]" placeholder="terminal" required>
+                </div>
+                <div class="form-group col-md-12">
+                   <button type="submit" class="btn btn-primary btn-block edit-box" name="submit" value="submit">submit</button>
+                </div>
+              </form>
+            </div>
+       </div> -->
+
+     </div>
 
     </body>
 </html>

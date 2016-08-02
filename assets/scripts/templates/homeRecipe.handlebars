@@ -1,0 +1,68 @@
+<!-- <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+    <h5> Recipe Name: {{name}} </p>
+    <h5> Category: {{category}} </p>
+    <div>
+      <h5>Ingredients: </h5>
+      <ul>
+        {{#each ingredients}}
+          <li>{{this}}</li>
+        {{/each}}
+     </ul>
+    </div>
+    <div>
+      <h5>Instructions: </h5>
+      <ul>
+       {{#each instructions}}
+        <li>{{this}}</li>
+       {{/each}}
+     </ul>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn-group" style="float:left;">
+              <h4 class="media-heading">Recipe Info</h4>
+            </div>
+            <div class="btn-group" style="float:right;">
+              <form id="add-recipe-info">
+                <fieldset>
+                  <input id="like-recipe-{{id}}" type="hidden" name="like_recipe[recipe_id]" value={{id}}>
+                  <button id="add-like-{{id}}" type="button" class="btn btn-default">Add to my Recipe</button>
+                </fieldset>
+              </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="media">
+                <div class="media-body">
+                  <p> Recipe Name: {{name}} </p>
+                  <div>
+                    <p>Ingredients: </p>
+                    <ul>
+                      {{#each ingredients}}
+                        <li>{{this}}</li>
+                      {{/each}}
+                   </ul>
+                  </div>
+                  <div>
+                    <p>Instructions: </p>
+                    <ul>
+                     {{#each instructions}}
+                      <li>{{this}}</li>
+                     {{/each}}
+                   </ul>
+                  </div>
+                <div class="clearfix"></div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

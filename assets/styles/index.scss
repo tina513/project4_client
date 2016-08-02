@@ -1,2 +1,44 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+.container {
+  margin-top: 80px;
+}
+
+.user-choice {
+  margin-top: 80px;
+}
+
+.panel-primary {
+  margin-top: 20px;
+}
+
+.input-field {
+  text-align: center;
+  float: left;
+  margin: 10px;
+}
+
+.ingredients-input {
+  float: left;
+}
+
+.instructions-input {
+  float: left;
+}
+
+.home-recipe-content {
+  margin-top: 80px;
+}
+
+.sidebar-content {
+  height: 100%;
+  display: block;
+  float: left;
+  background-color: rgba(223, 240, 216, 0.5);
+}
+
+.tab-content {
+  overflow: auto;
+}

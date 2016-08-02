@@ -5,6 +5,31 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 
+const onShowSignUp = () => {
+  $('.first-window').addClass('hidden');
+  $('.sign-in-window').addClass('hidden');
+  $('.sign-up-window').removeClass('hidden');
+};
+
+const onShowSignIn = () => {
+  $('.first-window').addClass('hidden');
+  $('.sign-up-window').addClass('hidden');
+  $('.sign-in-window').removeClass('hidden');
+};
+
+const onShowCP = () => {
+  $('.first-window').addClass('hidden');
+  $('.sign-out-window').addClass('hidden');
+  $('.recipe-content').addClass('hidden');
+  $('.change-password-window').removeClass('hidden');
+};
+
+const onShowSignOut = () => {
+  $('.first-window').addClass('hidden');
+  $('.change-password-window').addClass('hidden');
+  $('.recipe-content').addClass('hidden');
+  $('.sign-out-window').removeClass('hidden');
+};
 
 const onSignUp = (event) => {
   event.preventDefault();
@@ -39,6 +64,10 @@ const onChangePassword = (event) => {
 
 const addHandlers = () => {
   $('.user-info').hide();
+  $('.signUp').on('click', onShowSignUp);
+  $('.signIn').on('click', onShowSignIn);
+  $('.changePassword').on('click', onShowCP);
+  $('.signOut').on('click', onShowSignOut);
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#sign-out').on('submit', onSignOut);

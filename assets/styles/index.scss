@@ -1,6 +1,29 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.listed-item {
+  margin: 5px;
+}
+
+.first-window {
+  margin-top: 80px;
+}
+
+.sign-up-window {
+  margin-top: 80px;
+}
+
+.sign-in-window {
+  margin-top: 80px;
+}
+
+.change-password-window {
+  margin-top: 80px;
+}
+
+.sign-out-window {
+  margin-top: 80px;
+}
 
 .container {
   margin-top: 80px;

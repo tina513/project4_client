@@ -15,8 +15,15 @@ const signInSuccess = (data) => {
   app.user = data.user;
   $('.signUp').hide();
   $('.signIn').hide();
+  $('.sign-up-window').addClass('hidden');
+  $('.sign-in-window').addClass('hidden');
   $('.user-info').show();
+  $('.user-toggle').removeClass('hidden');
+  $('.home-toggle').removeClass('hidden');
+  $('.changePassword').removeClass('hidden');
+  $('.signOut').removeClass('hidden');
   $('.user-email').text(data.user.email);
+  $('.first-window').addClass('hidden');
   console.log('Success');
 };
 

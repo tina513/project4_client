@@ -1,7 +1,6 @@
 'use strict';
 
 const app = require('../app.js');
-const ui = require('./ui.js');
 
 const createRecipe = (data) => {
   return $.ajax({
@@ -14,17 +13,18 @@ const createRecipe = (data) => {
   });
 };
 
-const getUserRecipe = () => {
+const editRecipe = (data, id) => {
   return $.ajax({
-      url: app.host + `/recipes`,
-      method: 'GET',
-      headers: {
-        Authorization: 'Token token=' + app.user.token,
-      },
-    });
+    url: app.host + '/recipes/'+ id,
+    method: "PATCH",
+    data: data,
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
 };
 
-const getHomeRecipe = () => {
+const getAllRecipes = () => {
   return $.ajax({
       url: app.host + `/recipes`,
       method: 'GET',
@@ -44,43 +44,10 @@ const getLikeRecipe = () => {
     });
 };
 
-// const updateRecipe = (data) => {
-//   return $.ajax({
-//         url: app.host + `/recipes/` + data.recipe.id,
-//         method: 'PATCH',
-//         data: data,
-//         headers: {
-//           Authorization: 'Token token=' + app.user.token,
-//        },
-//    });
-//  };
-//
-// const deleteRcipe = (data) => {
-//   return $.ajax({
-//       url: app.host + '/recipes/' + data.recipe.id,
-//       method: "DELETE",
-//       headers: {
-//           Authorization: 'Token token=' + app.user.token,
-//       },
-//     });
-// };
-
-// const searchFlight = (data) => {
-//   return $.ajax({
-//       url: app.host + '/flights',
-//       method: 'GET',
-//       headers: {
-//         Authorization: 'Token token=' + app.user.token,
-//       },
-//     });
-// };
 
 module.exports = {
   createRecipe,
-  getUserRecipe,
-  getHomeRecipe,
+  editRecipe,
+  getAllRecipes,
   getLikeRecipe,
-  // updateRecipe,
-  // deleteRcipe,
-  // searchFlight,
 };

@@ -1,5 +1,5 @@
 'use strict';
-//
+
 const getFormFields = require('../../../lib/get-form-fields');
 
 const api = require('./api');
@@ -8,14 +8,14 @@ const ui = require('./ui');
 let stepCount = 1;
 const onAddSteps = () => {
   let stepNumber = stepCount.toString();
-  $( "#instructions-input" ).append( '<input class="input-field" type="text" name="recipe[instructions][' +stepNumber+ ']" placeholder="instruction step"><br>');
+  $( ".instructions-input" ).append( '<input class="input-field" type="text" name="recipe[instructions][' +stepNumber+ ']" placeholder="instruction step"><br>');
   stepCount++;
 };
 
 let ingredientCount = 1;
 const onAddIngredients = () => {
   let ingredientNumber = ingredientCount.toString();
-  $( "#ingredients-input" ).append( '<input class="input-field" type="text" name="recipe[ingredients][' +ingredientNumber+ ']" placeholder="ingredients"><br >');
+  $( ".ingredients-input" ).append( '<input class="input-field" type="text" name="recipe[ingredients][' +ingredientNumber+ ']" placeholder="ingredients"><br >');
   ingredientCount++;
 };
 
@@ -35,32 +35,40 @@ const onCreateRecipe = (event) => {
   .fail(ui.failure);
 };
 
-const onMakeRecipe = (event) => {
+const onEditRecipe = (event) => {
   event.preventDefault();
-  $('.user-recipe-content').addClass('hidden');
-  $('.make-recipe-div').removeClass('hidden');
+  let data = getFormFields(event.target);
+  data.recipe.instructions = convertObjectToArry(data.recipe.instructions);
+  data.recipe.ingredients = convertObjectToArry(data.recipe.ingredients);
+  let allUserRecipes = ui.getRecipeInfo();
+  for(let i = 0; i<allUserRecipes.length; i++) {
+    let userRecipe = allUserRecipes[i];
+    if(userRecipe.name===data.recipe.name){
+      console.log(userRecipe);
+      api.editRecipe(data, userRecipe.id)
+      .done(ui.createCreateSuccess)
+      .fail(ui.failure);
+    }
+  }
 };
 
-const onCheckRecipe = (event) => {
+const onUserRecipe = () => {
   event.preventDefault();
-  $('.make-recipe-div').addClass('hidden');
-  $('.user-recipe-content').removeClass('hidden');
-  $('.user-recipe-content').text("");
-  api.getUserRecipe()
+  $('.recipe-content').removeClass('hidden');
+  $('#favorite-tab').addClass('hidden');
+  $('#make-recipe-tab').removeClass('hidden');
+  $('#make-recipe-content').removeClass('hidden');
+  api.getAllRecipes()
    .done(ui.getUserRecipeSuccess)
    .fail(ui.failure);
 };
 
-const onUserRecipe = () => {
-  $('.user-choice').removeClass('hidden');
-};
-
 const onHomeRecipe = (event) => {
   event.preventDefault();
-  $('.user-choice').addClass('hidden');
-  $('.user-recipe-content').text("");
-  //$('.home-recipe-content').text("");
-  api.getHomeRecipe()
+  $('.recipe-content').removeClass('hidden');
+  $('#favorite-tab').removeClass('hidden');
+  $('#make-recipe-tab').addClass('hidden');
+  api.getAllRecipes()
    .done(ui.getHomeRecipeSuccess)
    .fail(ui.failure);
 };
@@ -72,59 +80,18 @@ const onFavoriteRecipe = (event) => {
    .done(ui.getLikeRecipeSuccess)
    .fail(ui.failure);
 };
-// const onPastFlight = (event) => {
-//   $('.search-flight-content').text('');
-//   $('.future-flight-content').text('');
-//   $('.past-flight-content').text('');
-//   event.preventDefault();
-//   api.getFlight()
-//   .done(ui.getPastFlightSuccess)
-//   .fail(ui.failure);
-// };
-//
-// const onEditFlight = (event) => {
-//   event.preventDefault();
-//   let data = getFormFields(event.target);
-//   console.log(data);
-//   api.updateFlight(data)
-//   .done(ui.updateFlightsuccess)
-//   .fail(ui.failure);
-// };
-//
-// const onDeleteFlight = (event) => {
-//   event.preventDefault();
-//   let data = getFormFields(event.target);
-//   api.deleteFlight(data)
-//   .done(ui.deleteSuccess)
-//   .fail(ui.failure);
-// };
-//
-// const onSearchFlight = (event) => {
-//   $('.search-flight-content').text('');
-//   $('.future-flight-content').text('');
-//   $('.past-flight-content').text('');
-//   event.preventDefault();
-//   let data = getFormFields(event.target);
-//   console.log(data);
-//   api.searchFlight(data)
-//   .done(ui.searchSuccess)
-//   .fail(ui.failure);
-// };
+
 
 const addHandlers = () => {
   $('.user-toggle').on('click', onUserRecipe);
   $('.home-toggle').on('click', onHomeRecipe);
-  $('.make-recipe-button').on('click', onMakeRecipe);
-  $('.check-recipe-button').on('click', onCheckRecipe);
   $('#add-another-step').on('click', onAddSteps);
   $('#add-another-ingredient').on('click', onAddIngredients);
   $('#recipe-fillout').on('submit', onCreateRecipe);
   $('#favorite-tab').on('click', onFavoriteRecipe);
-  // $('#future-flight').on('click', onFutureFlight);
-  // $('#past-flight').on('click', onPastFlight);
-  // $('#edit-flight-content').on('submit', onEditFlight);
-  // $('#delete-flight').on('submit', onDeleteFlight);
-  // $('#search-flight').on('submit', onSearchFlight);
+  $('#add-another-step-edit').on('click', onAddSteps);
+  $('#add-another-ingredient-edit').on('click', onAddIngredients);
+  $('#recipe-fillout-edit').on('submit', onEditRecipe);
 };
 
 

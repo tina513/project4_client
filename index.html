@@ -19,13 +19,10 @@
 
         <li>
           <button type="button" class="btn btn-primary user-toggle">User</button>
-            <!-- <button type="button" class="btn btn-primary make-recipe-button">Make Recipe</button> -->
         </li>
         <li>
           <button type="button" class="btn btn-primary home-toggle">Home</button>
-            <!-- <button type="button" class="btn btn-primary make-recipe-button">Make Recipe</button> -->
         </li>
-
          <li class="dropdown signUp">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b> Sign Up</b> <span class="caret"></span></a>
            <ul class="dropdown-menu auth-dp">
@@ -141,7 +138,7 @@
     <div class="content">
 
 
-    <div class="home-recipe-content">
+    <div class="recipe-content hidden">
      <div>
       <div class="col-sm-2 sidebar-content">
        <nav class="nav-sidebar">
@@ -153,6 +150,8 @@
             <li><a href="#tab4" data-toggle="tab">Stir-Fry</a></li>
             <li><a href="#tab5" data-toggle="tab">Steam</a></li>
             <li><a href="#tab6" data-toggle="tab" id="favorite-tab">Favorite Collection</a></li>
+            <li><a href="#tab7" data-toggle="tab" id="make-recipe-tab">Make a new Recipe</a></li>
+            <li><a href="#tab8" data-toggle="tab" id="edit-recipe-tab">Update your Recipes</a></li>
           </ul>
        </nav>
       </div>
@@ -193,96 +192,67 @@
       <hr>
       <div class="favorite-recipe-content col-md-12 home-content">
       </div>
-   </div>
+    </div>
+    <div class="tab-pane text-style" id="tab7">
+      <h2>Make a new Recipe~!</h2>
+      <hr>
+      <div class="make-recipe-content col-md-12">
+        <form id="recipe-fillout">
+          <fieldset>
+              <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
+              <div class="form-group col-md-2">
+                <select class="form-control input-field" name="recipe[category]">
+                  <option>Grill</option>
+                  <option>Fry</option>
+                  <option>Bake</option>
+                  <option>Stir-Fry</option>
+                </select>
+              </div>
+              <div class="instructions-input">
+                <input class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"><br >
+              </div>
+              <div class="ingredients-input">
+                <input class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"><br >
+              </div>
+              <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit">
+            </fieldset>
+        </form>
+        <input class="btn btn-success" id="add-another-step" type="button" name="addstep" value="Add another instruction step">
+        <input class="btn btn-success" id="add-another-ingredient" type="button" name="addingredient" value="Add another ingredient">
+      </div>
+    </div>
+    <div class="tab-pane text-style" id="tab8">
+      <h2>Edit Recipes~!</h2>
+      <hr>
+      <div class="edit-recipe-content col-md-12">
+        <form id="recipe-fillout-edit">
+          <fieldset>
+              <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
+              <div class="form-group col-md-2">
+                <select class="form-control input-field" name="recipe[category]">
+                  <option>Grill</option>
+                  <option>Fry</option>
+                  <option>Bake</option>
+                  <option>Stir-Fry</option>
+                </select>
+              </div>
+              <div class="instructions-input">
+                <input class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"><br >
+              </div>
+              <div class="ingredients-input">
+                <input class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"><br >
+              </div>
+              <input class="btn btn-primary" id="complete-recipe-update" type="submit" name="submit" value="submit">
+            </fieldset>
+        </form>
+        <input class="btn btn-success" id="add-another-step-edit" type="button" name="addstep" value="Need another instruction step?">
+        <input class="btn btn-success" id="add-another-ingredient-edit" type="button" name="addingredient" value="Need another ingredient?">
+      </div>
+    </div>
      </div>
     </div>
   </div>
 
-
-
-        <div class="user-choice hidden">
-          <button type="button" class="btn btn-primary make-recipe-button">Make Recipe</button>
-          <button type="button" class="btn btn-primary check-recipe-button">Check your Recipe</button>
-        </div>
-
-        <div class="panel panel-primary make-recipe-div hidden">
-         <div class="panel-heading">
-             <h3 class="panel-title">
-                 <span class="glyphicon glyphicon-bookmark"></span> Add your Favorite Recipe!</h3>
-         </div>
-         <div class="panel-body">
-          <form id="recipe-fillout">
-            <fieldset>
-                <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
-                <input class="input-field" type="text" name="recipe[category]" placeholder="cooking method">
-                <div id="instructions-input">
-                  <input class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"><br >
-                </div>
-                <div id="ingredients-input">
-                  <input class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"><br >
-                </div>
-                <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit">
-              </fieldset>
-          </form>
-          <input class="btn btn-success" id="add-another-step" type="button" name="addstep" value="Add another instruction step">
-          <input class="btn btn-success" id="add-another-ingredient" type="button" name="addingredient" value="Add another ingredient">
-        </div>
-       </div>
-
-       <div class="user-recipe-content col-md-12 hidden">
-       </div>
-
-       <!-- <div class="home-recipe-content col-md-12 hidden">
-       </div> -->
-       <!-- <div>
-           <div class="lala">
-              <form class="form" id="edit-recipe-content">
-                 <div class="form-group col-md-6">
-                   <label class="sr-only" for="exampleInputEmail2">Flight Number</label>
-                   <input class="form-control input-field" type="text" name="flights[flight_number]" placeholder="flight number" required>
-                 </div>
-                 <div class="form-group col-md-6">
-                    <label class="sr-only" for="exampleInputEmail2">Departure Date</label>
-                    <input class="form-control input-field" type="date" name="flights[departure_date]" placeholder="departure date" required>
-                </div>
-                <div class="form-group col-md-6">
-                   <label class="sr-only" for="exampleInputEmail2">Departure Time</label>
-                   <input class="form-control input-field" type="text" name="flights[departure_time]" placeholder="departure time" required>
-                </div>
-                <div class="form-group col-md-6">
-                   <label class="sr-only" for="exampleInputEmail2">Departure</label>
-                   <input class="form-control input-field" type="text" name="flights[departure]" placeholder="departure" required>
-                </div>
-                <div class="form-group col-md-6">
-                   <label class="sr-only" for="exampleInputEmail2">Arrival Date</label>
-                   <input class="form-control input-field" type="date" name="flights[arrival_date]" placeholder="arrival date" required>
-                </div>
-                <div class="form-group col-md-6">
-                   <label class="sr-only" for="exampleInputEmail2">Arrival Time</label>
-                   <input class="form-control input-field" type="text" name="flights[arrival_time]" placeholder="arrival time" required>
-                </div>
-                <div class="form-group col-md-6">
-                   <label class="sr-only" for="exampleInputEmail2">Arrival</label>
-                   <input class="form-control input-field" type="text" name="flights[arrival]" placeholder="arrival" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="sr-only" for="exampleInputEmail2">Arrival Place Zipcode</label>
-                  <input class="form-control input-field" type="text" name="flights[arrival_zipcode]" placeholder="arrival zipcode" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="sr-only" for="exampleInputEmail2">Gate</label>
-                  <input class="form-control input-field" type="text" name="flights[gate]" placeholder="gate" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="sr-only" for="exampleInputEmail2">Terminal</label>
-                  <input class="form-control input-field" type="text" name="flights[terminal]" placeholder="terminal" required>
-                </div>
-                <div class="form-group col-md-12">
-                   <button type="submit" class="btn btn-primary btn-block edit-box" name="submit" value="submit">submit</button>
-                </div>
-              </form>
-            </div>
-       </div> -->
 
      </div>
 

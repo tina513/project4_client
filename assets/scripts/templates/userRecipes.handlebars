@@ -1,0 +1,42 @@
+<div class="container col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn-group" style="float:left;">
+              <h4 class="media-heading">Recipe Info</h4>
+            </div>
+            <div class="btn-group" style="float:right;">
+              <form id="del-recipe-info">
+                <fieldset>
+                  <input id="delete-recipe-{{id}}" type="hidden" name="recipe[id]" value={{id}}>
+                  <button id="del-recipe-{{id}}" type="button" class="btn btn-danger">Delete</button>
+                </fieldset>
+              </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="media">
+                <div class="media-body">
+                  <p> Recipe Name: {{name}} </p>
+                  <div>
+                    <p>Ingredients: </p>
+                    <ul>
+                      {{#each ingredients}}
+                        <li>{{this}}</li>
+                      {{/each}}
+                   </ul>
+                  </div>
+                  <div>
+                    <p>Instructions: </p>
+                    <ul>
+                     {{#each instructions}}
+                      <li>{{this}}</li>
+                     {{/each}}
+                   </ul>
+                  </div>
+                <div class="clearfix"></div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

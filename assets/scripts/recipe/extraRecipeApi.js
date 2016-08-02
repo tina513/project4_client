@@ -28,7 +28,18 @@ const getLikeRecipes = (recipeId) => {
    });
 };
 
+const deleteRecipe = (recipeId) => {
+  return $.ajax({
+        url: app.host + '/recipes/' + recipeId,
+        method: "DELETE",
+        headers: {
+          Authorization: 'Token token=' + app.user.token,
+        },
+   });
+};
+
 module.exports = {
   addLikeRecipe,
   getLikeRecipes,
+  deleteRecipe,
 };

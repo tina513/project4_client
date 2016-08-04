@@ -1,17 +1,25 @@
 <div class="container col-md-4">
-    <div class="panel panel-default">
+    <div class="panel panel-default panel-table">
         <div class="panel-body">
             <div class="media">
                 <div class="media-body">
-                  <p> Recipe Name: {{name}} </p>
-                  <p> Category: {{category}} </p>
+                  <h3> {{name}} </h3>
+                  <hr>
+                  <h5> Category: {{category}} </h5>
                   <div>
-                    <p>Ingredients: </p>
-                    <ul>
+                    <h5>Ingredients: </h5>
+                    <div class="tr">
+                    {{#each ingredients}}
+                    <div class="td">
+                      {{this}}
+                    </div>
+                    {{/each}}
+                  </div>
+                    <!-- <ul>
                       {{#each ingredients}}
                         <li>{{this}}</li>
                       {{/each}}
-                   </ul>
+                   </ul> -->
                   </div>
                   <div>
                     <p>Instructions: </p>

@@ -17,7 +17,6 @@ const signInSuccess = (data) => {
   $('.signIn').hide();
   $('.sign-up-window').addClass('hidden');
   $('.sign-in-window').addClass('hidden');
-  $('.user-info').show();
   $('.user-toggle').removeClass('hidden');
   $('.home-toggle').removeClass('hidden');
   $('.changePassword').removeClass('hidden');
@@ -38,10 +37,11 @@ const changePasswordSuccess = (data) => {
 const signOutSuccess = () => {
   $('.signUp').show();
   $('.signIn').show();
-  $('.user-info').hide();
-  $('.search-flight-content').text('');
-  $('.future-flight-content').text('');
-  $('.past-flight-content').text('');
+  $('.user-toggle').addClass('hidden');
+  $('.home-toggle').addClass('hidden');
+  $('.changePassword').addClass('hidden');
+  $('.signOut').addClass('hidden');
+  $('.first-window').removeClass('hidden');
   console.log('User signed out successfully');
 };
 

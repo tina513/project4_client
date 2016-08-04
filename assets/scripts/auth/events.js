@@ -24,12 +24,12 @@ const onShowCP = () => {
   $('.change-password-window').removeClass('hidden');
 };
 
-const onShowSignOut = () => {
-  $('.first-window').addClass('hidden');
-  $('.change-password-window').addClass('hidden');
-  $('.recipe-content').addClass('hidden');
-  $('.sign-out-window').removeClass('hidden');
-};
+// const onShowSignOut = () => {
+//   $('.first-window').addClass('hidden');
+//   $('.change-password-window').addClass('hidden');
+//   $('.recipe-content').addClass('hidden');
+//   $('.sign-out-window').removeClass('hidden');
+// };
 
 const onSignUp = (event) => {
   event.preventDefault();
@@ -48,6 +48,10 @@ const onSignIn = (event) => {
 };
 
 const onSignOut = (event) => {
+  $('.first-window').addClass('hidden');
+  $('.change-password-window').addClass('hidden');
+  $('.recipe-content').addClass('hidden');
+  $('.sign-out-window').removeClass('hidden');
   event.preventDefault();
   api.signOut()
   .done(ui.signOutSuccess)
@@ -63,14 +67,12 @@ const onChangePassword = (event) => {
 };
 
 const addHandlers = () => {
-  $('.user-info').hide();
   $('.signUp').on('click', onShowSignUp);
   $('.signIn').on('click', onShowSignIn);
   $('.changePassword').on('click', onShowCP);
-  $('.signOut').on('click', onShowSignOut);
+  $('#sign-out').on('click', onSignOut);
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
-  $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
 };
 

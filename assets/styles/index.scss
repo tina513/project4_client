@@ -2,7 +2,9 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 .listed-item {
-  margin: 5px;
+  margin-right: 10px;
+  margin-top: 8px;
+
 }
 
 .first-window {
@@ -11,6 +13,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .sign-up-window {
   margin-top: 80px;
+}
+
+.box{
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    border-radius: 4px;
+    top:50px;
+}
+
+h2{
+    text-align:center;
+    color:'black';
 }
 
 .sign-in-window {
@@ -26,7 +41,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .container {
-  margin-top: 80px;
+
 }
 
 .user-choice {
@@ -35,6 +50,11 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .panel-primary {
   margin-top: 20px;
+}
+
+.panel-default {
+  border-color: #3495c5;
+  background-color: 'floralwhite';
 }
 
 .input-field {

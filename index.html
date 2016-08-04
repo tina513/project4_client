@@ -13,27 +13,23 @@
          <h3 style="color: white; margin-left:20px;">Recipe House</h3>
        </div>
        <ul class="nav navbar-nav navbar-right">
-        <li class="user-info">
-          <a href="#" class="user-email"></a>
-        </li>
-
         <li class="listed-item">
-          <button type="button" class="btn btn-primary user-toggle hidden">User</button>
+          <button type="button" class="btn btn-success btn-cons user-toggle hidden">User</button>
         </li>
         <li class="listed-item">
-          <button type="button" class="btn btn-primary home-toggle hidden">Home</button>
+          <button type="button" class="btn btn-success btn-cons home-toggle hidden">Home</button>
         </li>
         <li class="listed-item">
-          <button type="button" class="btn btn-success signUp">signUp</button>
+          <button type="button" class="btn btn-success btn-cons signUp">signUp</button>
         </li>
         <li class="listed-item">
-          <button type="button" class="btn btn-success signIn">LogIn</button>
+          <button type="button" class="btn btn-success btn-cons signIn">LogIn</button>
         </li>
         <li class="listed-item">
-          <button type="button" class="btn btn-success changePassword hidden">ChangePassword</button>
+          <button type="button" class="btn btn-success btn-cons changePassword hidden">ChangePassword</button>
         </li>
         <li class="listed-item">
-          <button type="button" class="btn btn-success signOut hidden">signOut</button>
+          <button type="button" class="btn btn-success btn-cons signOut hidden" id="sign-out">signOut</button>
         </li>
      </ul>
     </nav>
@@ -42,74 +38,122 @@
 
     <div class="first-window">
       <h2>Welcome to Recipe House</h2>
-      <canvas id="myCanvas"></canvas>
+      <!-- <canvas id="myCanvasGrill" width="500" height="500"></canvas> -->
+      <div style="padding: auto;">
+       <canvas id="myCanvas"></canvas>
+     </div>
     </div>
 
     <div class="sign-up-window hidden">
-      <form class="form" role="form" accept-charset="UTF-8" id="sign-up">
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-            <input type="text" class="form-control" id="sign-up-email" name="credentials[email]" placeholder="Email address" required>
-         </div>
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword2">Password</label>
-            <input type="password" class="form-control" id="sign-up-pw" name="credentials[password]" placeholder="Password" required>
-         </div>
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword2">Retype password</label>
-            <input type="password" class="form-control" id="sign-up-pw-retype" name="credentials[password_confirmation]" placeholder="Retype password" required>
-         </div>
-         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Sign up</button>
-         </div>
-      </form>
+      <div class="row-fluid" >
+          <div class="col-md-offset-4 col-md-4 box">
+            <h2>Sign Up</h2>
+            <hr>
+            <form class="form-horizontal" role="form" accept-charset="UTF-8" id="sign-up">
+              <fieldset>
+                <div class="form-group">
+                 <div class="col-md-12">
+                  <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input type="text" class="form-control" id="sign-up-email" name="credentials[email]" placeholder="Email address" required>
+                 </div>
+                </div>
+               </div>
+               <div class="form-group">
+                <div class="col-md-12">
+                 <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                 <input type="password" class="form-control" id="sign-up-pw" name="credentials[password]" placeholder="Password" required>
+                </div>
+               </div>
+              </div>
+              <div class="form-group">
+               <div class="col-md-12">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input type="password" class="form-control" id="sign-up-pw-retype" name="credentials[password_confirmation]" placeholder="Retype password" required>
+               </div>
+              </div>
+             </div>
+              <div class="form-group">
+                <div class="col-md-3" style="float:right;">
+                  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
     </div>
+   </div>
 
     <div class="sign-in-window hidden">
-      <form class="form" role="form" accept-charset="UTF-8" id="sign-in">
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-            <input type="text" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Email address" required>
-         </div>
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword2">Password</label>
-            <input type="password" class="form-control" id="sign-in-pw" name="credentials[password]" placeholder="Password" required>
-         </div>
-         <div class="fail-message" style="display:none; border:none; text-align: center;">
-           User-name/Password Invalid!
-         </div>
-         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-         </div>
-      </form>
+      <div class="row-fluid" >
+          <div class="col-md-offset-4 col-md-4 box">
+            <h2>Sign In</h2>
+            <hr>
+            <form class="form-horizontal" role="form" accept-charset="UTF-8" id="sign-in">
+              <fieldset>
+                <div class="form-group">
+                 <div class="col-md-12">
+                  <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input type="text" class="form-control" id="sign-in-email" name="credentials[email]" placeholder="Email address" required>
+                 </div>
+                </div>
+               </div>
+               <div class="form-group">
+                <div class="col-md-12">
+                 <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                 <input type="password" class="form-control" id="sign-in-pw" name="credentials[password]" placeholder="Password" required>
+                </div>
+               </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-3" style="float:right;">
+                  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div class="change-password-window hidden">
-      <form class="form" role="form" accept-charset="UTF-8" id="change-password">
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputEmail2">Old password</label>
-            <input class="form-control" type="password" id="old-pw" name="passwords[old]" placeholder="Old password" required>
-         </div>
-         <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword2">New password</label>
-            <input type="password" class="form-control" id="new-pw" name="passwords[new]" placeholder="New password" required>
-         </div>
-         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Change Password</button>
-         </div>
-      </form>
+      <div class="row-fluid" >
+          <div class="col-md-offset-4 col-md-4 box">
+            <h2>Change Password</h2>
+            <hr>
+            <form class="form-horizontal" role="form" accept-charset="UTF-8" id="change-password">
+              <fieldset>
+                <div class="form-group">
+                 <div class="col-md-12">
+                  <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input class="form-control" type="password" id="old-pw" name="passwords[old]" placeholder="Old password" required>
+                 </div>
+                </div>
+               </div>
+               <div class="form-group">
+                <div class="col-md-12">
+                 <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                 <input type="password" class="form-control" id="new-pw" name="passwords[new]" placeholder="New password" required>
+                </div>
+               </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-3" style="float:right;">
+                  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <div class="sign-out-window hidden">
-      <form class="form" role="form" accept-charset="UTF-8" id="sign-out">
-        <div class="col-md-12" style="margin-bottom:3%;">
-          Do you want to visit my site again?
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Definitely!!!</button>
-        </div>
-      </form>
-    </div>
 
     <div class="recipe-content hidden">
      <div>

@@ -42,7 +42,7 @@
 
     <div class="first-window">
       <h2>Welcome to Recipe House</h2>
-      <p>There will be a logo</p>
+      <canvas id="myCanvas"></canvas>
     </div>
 
     <div class="sign-up-window hidden">
@@ -170,6 +170,9 @@
       <h2>Make a new Recipe~!</h2>
       <hr>
       <div class="make-recipe-content col-md-12">
+
+
+
         <form id="recipe-fillout">
           <fieldset>
               <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
@@ -190,6 +193,15 @@
               <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit">
             </fieldset>
         </form>
+
+
+        <!-- <form id="photo-upload" enctype="multipart/form-data">
+          <fieldset>
+          <input type="file" name="recipe[image]">
+          <input class="upload" type="submit" name="submit" value="Upload">
+        </fieldset>
+        </form> -->
+
         <input class="btn btn-success" id="add-another-step" type="button" name="addstep" value="Add another instruction step">
         <input class="btn btn-success" id="add-another-ingredient" type="button" name="addingredient" value="Add another ingredient">
       </div>
@@ -200,7 +212,12 @@
       <div class="edit-recipe-content col-md-12">
         <form id="recipe-fillout-edit">
           <fieldset>
-              <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
+              <div class="form-group col-md-2">
+                <select class="form-control input-field edit-field" name="recipe[name]">
+
+                </select>
+              </div>
+              <!-- <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name"> -->
               <div class="form-group col-md-2">
                 <select class="form-control input-field" name="recipe[category]">
                   <option>Grill</option>

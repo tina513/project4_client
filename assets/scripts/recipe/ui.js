@@ -9,6 +9,11 @@ const failure = (error) => {
   console.error(error);
 };
 
+const addRecipeSuccess = (data) => {
+  console.log("success!");
+  $('.upload').addClass(`${data.id}`);
+};
+
 const createRecipeSuccess = () => {
   console.log("success!");
 };
@@ -90,14 +95,16 @@ const switchCategoryOnUser = (each) => {
 };
 
 const getUserRecipeSuccess = (data) => {
+  let editRecipeListing = require('../templates/editRecipe.handlebars');
   $('.home-content').text("");
   let recipeArr = data.recipes;
   for (let i = 0; i < recipeArr.length; i++) {
     let each = recipeArr[i];
     if (each.user_id === app.user.id) {
       allUserRecipes.push(each);
-      console.log(each.category);
+      console.log(each.name);
       switchCategoryOnUser(each);
+      $('.edit-field').append(editRecipeListing(each));
     }
   }
 };

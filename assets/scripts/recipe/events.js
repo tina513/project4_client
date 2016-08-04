@@ -25,14 +25,25 @@ const convertObjectToArry = (obj) => {
   });
 };
 
+// const onUpload = (event) => {
+//   event.preventDefault();
+//   let data = new FormData(event.target);
+//
+//   console.log(data);
+//   api.editRecipe(data, 1)
+//   .done(ui.createCreateSuccess)
+//   .fail(ui.failure);
+// };
+// const onArrRecipe = ()
+
 const onCreateRecipe = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
   data.recipe.instructions = convertObjectToArry(data.recipe.instructions);
   data.recipe.ingredients = convertObjectToArry(data.recipe.ingredients);
   api.createRecipe(data)
-  .done(ui.createCreateSuccess)
-  .fail(ui.failure);
+  .then(ui.addRecipeSuccess)
+  .catch(error=>console.error);
 };
 
 const onEditRecipe = (event) => {
@@ -58,6 +69,7 @@ const onUserRecipe = () => {
   $('#favorite-tab').addClass('hidden');
   $('#make-recipe-tab').removeClass('hidden');
   $('#make-recipe-content').removeClass('hidden');
+  $('#edit-recipe-tab').removeClass('hidden');
   api.getAllRecipes()
    .done(ui.getUserRecipeSuccess)
    .fail(ui.failure);
@@ -68,6 +80,7 @@ const onHomeRecipe = (event) => {
   $('.recipe-content').removeClass('hidden');
   $('#favorite-tab').removeClass('hidden');
   $('#make-recipe-tab').addClass('hidden');
+  $('#edit-recipe-tab').addClass('hidden');
   api.getAllRecipes()
    .done(ui.getHomeRecipeSuccess)
    .fail(ui.failure);
@@ -87,6 +100,7 @@ const addHandlers = () => {
   $('.home-toggle').on('click', onHomeRecipe);
   $('#add-another-step').on('click', onAddSteps);
   $('#add-another-ingredient').on('click', onAddIngredients);
+  // $('#photo-upload').on('submit', onUpload);
   $('#recipe-fillout').on('submit', onCreateRecipe);
   $('#favorite-tab').on('click', onFavoriteRecipe);
   $('#add-another-step-edit').on('click', onAddSteps);

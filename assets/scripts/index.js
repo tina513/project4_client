@@ -5,9 +5,12 @@
 
 const authEvents = require('./auth/events.js');
 const recipeEvents = require('./recipe/events.js');
+const paperMixingBowl = require('./paperAnimation/mixingBowl.js');
 
 // On document ready
 $(() => {
+ paper.install(window);
  authEvents.addHandlers();
  recipeEvents.addHandlers();
+ paperMixingBowl.addHandlers();
 });

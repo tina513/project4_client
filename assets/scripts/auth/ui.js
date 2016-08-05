@@ -23,7 +23,7 @@ const signInSuccess = (data) => {
   $('.signOut').removeClass('hidden');
   $('.user-email').text(data.user.email);
   $('.first-window').addClass('hidden');
-  console.log('Success');
+  console.log(data);
 };
 
 const changePasswordSuccess = (data) => {
@@ -42,6 +42,13 @@ const signOutSuccess = () => {
   $('.changePassword').addClass('hidden');
   $('.signOut').addClass('hidden');
   $('.first-window').removeClass('hidden');
+  $('#sign-up-email').val("");
+  $('#sign-up-pw').val("");
+  $('#sign-up-pw-retype').val("");
+  $('#sign-in-email').val("");
+  $('#sign-in-pw').val("");
+  $('#old-pw').val("");
+  $('#new-pw').val("");
   console.log('User signed out successfully');
 };
 

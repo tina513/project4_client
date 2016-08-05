@@ -2,6 +2,7 @@
 
 const app = require('../app.js');
 const extraRecipeApi = require('./extraRecipeApi.js');
+const api = require('./api.js');
 
 let allUserRecipes = [];
 
@@ -12,17 +13,41 @@ const failure = (error) => {
 const addRecipeSuccess = (data) => {
   console.log("success!");
   $('.upload').addClass(`${data.id}`);
+  $('.input-field').val("");
+  $( ".instructions-input-make" ).html( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"></textarea>');
+  $( ".ingredients-input-make" ).html( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"></textarea>');
+  api.getAllRecipes()
+   .done(getUserRecipeSuccess)
+   .fail(failure);
 };
 
 const createRecipeSuccess = () => {
   console.log("success!");
+  $('.input-field').val("");
+  $( ".instructions-input-edit" ).html( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"></textarea>');
+  $( ".ingredients-input-edit" ).html( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"></textarea>');
+  api.getAllRecipes()
+   .done(getUserRecipeSuccess)
+   .fail(failure);
+};
+
+const delRecipeSuccess = () => {
+  console.log("success!");
+  api.getAllRecipes()
+   .done(getUserRecipeSuccess)
+   .fail(failure);
+};
+
+const favorRecipeSuccess = (data) => {
+  console.log(data.like_recipe.recipe_id);
+  $('#add-like-' + data.like_recipe.recipe_id.toString()).html('<i class="glyphicon glyphicon-star"></i>');
 };
 
 const addLike = (data) => {
   $('#add-like-' + data.id.toString()).on('click', function(){
     let recipeId = $('#like-recipe-'+data.id.toString()).val();
     extraRecipeApi.addLikeRecipe(recipeId)
-    .done(createRecipeSuccess)
+    .done(favorRecipeSuccess)
     .fail(failure);
   });
 };
@@ -31,7 +56,7 @@ const addDel = (data) => {
   $('#del-recipe-' + data.id.toString()).on('click', function(){
     let recipeId = $('#delete-recipe-'+data.id.toString()).val();
     extraRecipeApi.deleteRecipe(recipeId)
-    .done(createRecipeSuccess)
+    .done(delRecipeSuccess)
     .fail(failure);
   });
 };
@@ -97,6 +122,7 @@ const switchCategoryOnUser = (each) => {
 const getUserRecipeSuccess = (data) => {
   let editRecipeListing = require('../templates/editRecipe.handlebars');
   $('.home-content').text("");
+  $('.edit-field').text("");
   let recipeArr = data.recipes;
   for (let i = 0; i < recipeArr.length; i++) {
     let each = recipeArr[i];
@@ -146,6 +172,7 @@ const getRecipeInfo = () => {
 
 module.exports = {
   failure,
+  addRecipeSuccess,
   createRecipeSuccess,
   getUserRecipeSuccess,
   getHomeRecipeSuccess,

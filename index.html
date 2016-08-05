@@ -25,11 +25,11 @@
         <li class="listed-item">
           <button type="button" class="btn btn-success btn-cons signIn">LogIn</button>
         </li>
-        <li class="listed-item">
+        <li class="listed-item" style="margin-left: -20px;">
           <button type="button" class="btn btn-success btn-cons changePassword hidden">ChangePassword</button>
         </li>
         <li class="listed-item">
-          <button type="button" class="btn btn-success btn-cons signOut hidden" id="sign-out">signOut</button>
+          <button type="button" class="btn btn-success btn-cons signOut hidden" id="sign-out">SignOut</button>
         </li>
      </ul>
     </nav>
@@ -39,9 +39,13 @@
     <div class="first-window">
       <h2>Welcome to Recipe House</h2>
       <!-- <canvas id="myCanvasGrill" width="500" height="500"></canvas> -->
-      <div style="padding: auto;">
+      <div class="col-xs-4">
+      </div>
+      <div class="col-xs-4 canvas-div">
        <canvas id="myCanvas"></canvas>
-     </div>
+      </div>
+      <div class="col-xs-4">
+      </div>
     </div>
 
     <div class="sign-up-window hidden">
@@ -62,7 +66,7 @@
                <div class="form-group">
                 <div class="col-md-12">
                  <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                  <input type="password" class="form-control" id="sign-up-pw" name="credentials[password]" placeholder="Password" required>
                 </div>
                </div>
@@ -70,13 +74,13 @@
               <div class="form-group">
                <div class="col-md-12">
                 <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                 <input type="password" class="form-control" id="sign-up-pw-retype" name="credentials[password_confirmation]" placeholder="Retype password" required>
                </div>
               </div>
              </div>
               <div class="form-group">
-                <div class="col-md-3" style="float:right;">
+                <div class="col-md-4" style="float:right;">
                   <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
               </div>
@@ -104,13 +108,13 @@
                <div class="form-group">
                 <div class="col-md-12">
                  <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                  <input type="password" class="form-control" id="sign-in-pw" name="credentials[password]" placeholder="Password" required>
                 </div>
                </div>
               </div>
               <div class="form-group">
-                <div class="col-md-3" style="float:right;">
+                <div class="col-md-4" style="float:right;">
                   <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
               </div>
@@ -130,7 +134,7 @@
                 <div class="form-group">
                  <div class="col-md-12">
                   <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                   <input class="form-control" type="password" id="old-pw" name="passwords[old]" placeholder="Old password" required>
                  </div>
                 </div>
@@ -138,13 +142,13 @@
                <div class="form-group">
                 <div class="col-md-12">
                  <div class="input-group">
-                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                  <input type="password" class="form-control" id="new-pw" name="passwords[new]" placeholder="New password" required>
                 </div>
                </div>
               </div>
               <div class="form-group">
-                <div class="col-md-3" style="float:right;">
+                <div class="col-md-4" style="float:right;">
                   <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
               </div>
@@ -207,20 +211,28 @@
     <div class="tab-pane text-style" id="tab6">
       <h2>Your Favorite Recipe~!</h2>
       <hr>
-      <div class="favorite-recipe-content col-md-12 home-content">
+      <div class="favorite-recipe-content col-md-12 home-content" id="sortable">
       </div>
     </div>
     <div class="tab-pane text-style" id="tab7">
-      <h2>Make a new Recipe~!</h2>
-      <hr>
+      <h2 style="float: left;">Make Recipe</h2>
+      <div style="float:right; margin-top: 20px;">
+       <input class="btn btn-success" id="add-another-step-make" type="button" name="addstep" value="Add another instruction step">
+       <input class="btn btn-success" id="add-another-ingredient-make" type="button" name="addingredient" value="Add another ingredient">
+       <!-- <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit"> -->
+     </div>
+      <hr style="clear: both;">
       <div class="make-recipe-content col-md-12">
-
-
 
         <form id="recipe-fillout">
           <fieldset>
-              <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name">
-              <div class="form-group col-md-2">
+             <div class="col-md-12">
+               <input class="btn btn-primary" id="complete-recipe-creation" style="float: right;" type="submit" name="submit" value="submit">
+             </div>
+             <div class="col-md-3">
+              <textarea rows="2" cols="23" class="input-field" type="text" name="recipe[name]" placeholder="recipe name"></textarea>
+             </div>
+              <div class="form-group col-md-3">
                 <select class="form-control input-field" name="recipe[category]">
                   <option>Grill</option>
                   <option>Fry</option>
@@ -228,41 +240,37 @@
                   <option>Stir-Fry</option>
                 </select>
               </div>
-              <div class="instructions-input">
-                <input class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"><br >
+              <div class="instructions-input-make col-md-3">
+                <textarea rows="2" cols="24" class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"></textarea>
               </div>
-              <div class="ingredients-input">
-                <input class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"><br >
+              <div class="ingredients-input-make col-md-3">
+                <textarea rows="2" cols="24" class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"></textarea>
               </div>
-              <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit">
+              <!-- <input class="btn btn-primary" id="complete-recipe-creation" type="submit" name="submit" value="submit"> -->
             </fieldset>
         </form>
 
-
-        <!-- <form id="photo-upload" enctype="multipart/form-data">
-          <fieldset>
-          <input type="file" name="recipe[image]">
-          <input class="upload" type="submit" name="submit" value="Upload">
-        </fieldset>
-        </form> -->
-
-        <input class="btn btn-success" id="add-another-step" type="button" name="addstep" value="Add another instruction step">
-        <input class="btn btn-success" id="add-another-ingredient" type="button" name="addingredient" value="Add another ingredient">
       </div>
     </div>
     <div class="tab-pane text-style" id="tab8">
-      <h2>Edit Recipes~!</h2>
-      <hr>
+      <h2 style="float: left;">Edit Recipes</h2>
+      <div style="float:right; margin-top: 20px;">
+        <input class="btn btn-success" id="add-another-step-edit" type="button" name="addstep" value="Need another instruction step?">
+        <input class="btn btn-success" id="add-another-ingredient-edit" type="button" name="addingredient" value="Need another ingredient?">
+     </div>
+      <hr style="clear: both;">
       <div class="edit-recipe-content col-md-12">
         <form id="recipe-fillout-edit">
           <fieldset>
-              <div class="form-group col-md-2">
+            <div class="col-md-12">
+              <input class="btn btn-primary" id="complete-recipe-update" style="float: right;"  type="submit" name="submit" value="submit">
+            </div>
+              <div class="form-group col-md-3">
                 <select class="form-control input-field edit-field" name="recipe[name]">
 
                 </select>
               </div>
-              <!-- <input class="input-field" type="text" name="recipe[name]" placeholder="recipe name"> -->
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-3">
                 <select class="form-control input-field" name="recipe[category]">
                   <option>Grill</option>
                   <option>Fry</option>
@@ -270,17 +278,15 @@
                   <option>Stir-Fry</option>
                 </select>
               </div>
-              <div class="instructions-input">
-                <input class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"><br >
+              <div class="instructions-input-edit col-md-3">
+                <textarea rows="2" cols="24" class="input-field instructions-input-field" type="text" name="recipe[instructions][0]" placeholder="instruction step"></textarea>
               </div>
-              <div class="ingredients-input">
-                <input class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"><br >
+              <div class="ingredients-input-edit col-md-3">
+                <textarea rows="2" cols="24" class="input-field ingredients-input-field" type="text" name="recipe[ingredients][0]" placeholder="ingredients"></textarea>
               </div>
-              <input class="btn btn-primary" id="complete-recipe-update" type="submit" name="submit" value="submit">
+              <!-- <input class="btn btn-primary" id="complete-recipe-update" type="submit" name="submit" value="submit"> -->
             </fieldset>
         </form>
-        <input class="btn btn-success" id="add-another-step-edit" type="button" name="addstep" value="Need another instruction step?">
-        <input class="btn btn-success" id="add-another-ingredient-edit" type="button" name="addingredient" value="Need another ingredient?">
       </div>
     </div>
      </div>

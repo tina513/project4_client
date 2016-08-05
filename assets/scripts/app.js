@@ -1,8 +1,8 @@
 'use strict';
 
 const app = {
-  //host: 'https://tripcare.herokuapp.com',
-  host: 'http://localhost:3000',
+  host: 'https://recipehouse.herokuapp.com',
+  //host: 'http://localhost:3000',
 
 };
 

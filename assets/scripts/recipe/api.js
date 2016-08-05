@@ -3,21 +3,13 @@
 const app = require('../app.js');
 
 const createRecipe = (data) => {
-  return new Promise((resolve, reject) => {
-    $.ajax({
+   return $.ajax({
      url: app.host + '/recipes',
      method: "POST",
      data: data,
      headers: {
        Authorization: 'Token token=' + app.user.token,
-     },
-     success: (response)=>{
-       resolve(response);
-     },
-     error: (error) => {
-       reject(error);
      }
-   });
   });
 };
 

@@ -5,18 +5,32 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 
-let stepCount = 1;
-const onAddSteps = () => {
-  let stepNumber = stepCount.toString();
-  $( ".instructions-input" ).append( '<input class="input-field" type="text" name="recipe[instructions][' +stepNumber+ ']" placeholder="instruction step"><br>');
-  stepCount++;
+let stepCountMake = 1;
+const onAddStepsMake = () => {
+  let stepNumberMake = stepCountMake.toString();
+  $( ".instructions-input-make" ).append( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[instructions][' +stepNumberMake+ ']" placeholder="instruction step"></textarea>');
+  stepCountMake++;
 };
 
-let ingredientCount = 1;
-const onAddIngredients = () => {
-  let ingredientNumber = ingredientCount.toString();
-  $( ".ingredients-input" ).append( '<input class="input-field" type="text" name="recipe[ingredients][' +ingredientNumber+ ']" placeholder="ingredients"><br >');
-  ingredientCount++;
+let ingredientCountMake = 1;
+const onAddIngredientsMake = () => {
+  let ingredientNumberMake = ingredientCountMake.toString();
+  $( ".ingredients-input-make" ).append( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[ingredients][' +ingredientNumberMake+ ']" placeholder="ingredients"></textarea>');
+  ingredientCountMake++;
+};
+
+let stepCountEdit = 1;
+const onAddStepsEdit = () => {
+  let stepNumberEdit = stepCountEdit.toString();
+  $( ".instructions-input-edit" ).append( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[instructions][' +stepNumberEdit+ ']" placeholder="instruction step"></textarea>');
+  stepCountEdit++;
+};
+
+let ingredientCountEdit = 1;
+const onAddIngredientsEdit = () => {
+  let ingredientNumberEdit = ingredientCountEdit.toString();
+  $( ".ingredients-input-edit" ).append( '<textarea rows="2" cols="24" class="input-field" type="text" name="recipe[ingredients][' +ingredientNumberEdit+ ']" placeholder="ingredients"></textarea>');
+  ingredientCountEdit++;
 };
 
 const convertObjectToArry = (obj) => {
@@ -42,8 +56,8 @@ const onCreateRecipe = (event) => {
   data.recipe.instructions = convertObjectToArry(data.recipe.instructions);
   data.recipe.ingredients = convertObjectToArry(data.recipe.ingredients);
   api.createRecipe(data)
-  .then(ui.addRecipeSuccess)
-  .catch(error=>console.error);
+  .done(ui.addRecipeSuccess)
+  .fail(ui.failure);
 };
 
 const onEditRecipe = (event) => {
@@ -57,14 +71,13 @@ const onEditRecipe = (event) => {
     if(userRecipe.name===data.recipe.name){
       console.log(userRecipe);
       api.editRecipe(data, userRecipe.id)
-      .done(ui.createCreateSuccess)
+      .done(ui.createRecipeSuccess)
       .fail(ui.failure);
     }
   }
 };
 
 const onUserRecipe = () => {
-  event.preventDefault();
   $('.recipe-content').removeClass('hidden');
   $('#favorite-tab').addClass('hidden');
   $('#make-recipe-tab').removeClass('hidden');
@@ -77,6 +90,7 @@ const onUserRecipe = () => {
 
 const onHomeRecipe = (event) => {
   event.preventDefault();
+  // $('.tab-content').empty("");
   $('.recipe-content').removeClass('hidden');
   $('#favorite-tab').removeClass('hidden');
   $('#make-recipe-tab').addClass('hidden');
@@ -98,17 +112,19 @@ const onFavoriteRecipe = (event) => {
 const addHandlers = () => {
   $('.user-toggle').on('click', onUserRecipe);
   $('.home-toggle').on('click', onHomeRecipe);
-  $('#add-another-step').on('click', onAddSteps);
-  $('#add-another-ingredient').on('click', onAddIngredients);
+  $('#add-another-step-make').on('click', onAddStepsMake);
+  $('#add-another-ingredient-make').on('click', onAddIngredientsMake);
   // $('#photo-upload').on('submit', onUpload);
   $('#recipe-fillout').on('submit', onCreateRecipe);
   $('#favorite-tab').on('click', onFavoriteRecipe);
-  $('#add-another-step-edit').on('click', onAddSteps);
-  $('#add-another-ingredient-edit').on('click', onAddIngredients);
+  $('#add-another-step-edit').on('click', onAddStepsEdit);
+  $('#add-another-ingredient-edit').on('click', onAddIngredientsEdit);
   $('#recipe-fillout-edit').on('submit', onEditRecipe);
 };
 
 
 module.exports = {
+  onHomeRecipe,
+  onUserRecipe,
   addHandlers,
 };

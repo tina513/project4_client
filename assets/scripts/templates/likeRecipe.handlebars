@@ -3,31 +3,24 @@
         <div class="panel-body">
             <div class="media">
                 <div class="media-body">
-                  <h3> {{name}} </h3>
+                  <h4> {{name}} </h4>
                   <hr>
-                  <h5> Category: {{category}} </h5>
+                  <!-- <h5> Category: {{category}} </h5> -->
                   <div>
-                    <h5>Ingredients: </h5>
-                    <div class="tr">
-                    {{#each ingredients}}
-                    <div class="td">
-                      {{this}}
-                    </div>
-                    {{/each}}
-                  </div>
-                    <!-- <ul>
+                   <h5>Ingredients: </h5>
+                    <ul>
                       {{#each ingredients}}
                         <li>{{this}}</li>
                       {{/each}}
-                   </ul> -->
+                   </ul>
                   </div>
                   <div>
-                    <p>Instructions: </p>
-                    <ul>
+                    <h5>Instructions: </h5>
+                    <ol>
                      {{#each instructions}}
                       <li>{{this}}</li>
                      {{/each}}
-                   </ul>
+                   </ol>
                   </div>
                 <div class="clearfix"></div>
                </div>

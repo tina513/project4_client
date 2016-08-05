@@ -5,6 +5,7 @@ const extraRecipeApi = require('./extraRecipeApi.js');
 const api = require('./api.js');
 
 let allUserRecipes = [];
+// let allFavorite = [];
 
 const failure = (error) => {
   console.error(error);

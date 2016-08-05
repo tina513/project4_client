@@ -6,7 +6,7 @@
 const authEvents = require('./auth/events.js');
 const recipeEvents = require('./recipe/events.js');
 const paperMixingBowl = require('./paperAnimation/mixingBowl.js');
-const paperGrill = require('./paperAnimation/grill.js');
+// const paperGrill = require('./paperAnimation/grill.js');
 
 // On document ready
 $(() => {
@@ -14,5 +14,5 @@ $(() => {
  authEvents.addHandlers();
  recipeEvents.addHandlers();
  paperMixingBowl.addHandlers();
- paperGrill.addHandlers();
+ // paperGrill.addHandlers();
 });

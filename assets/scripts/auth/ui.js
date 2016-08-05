@@ -27,11 +27,18 @@ const signInSuccess = (data) => {
 };
 
 const changePasswordSuccess = (data) => {
-  if (data) {
-    console.log(data);
-  } else {
-    console.log('Success');
-  }
+  $('.signUp').hide();
+  $('.signIn').hide();
+  $('.sign-up-window').addClass('hidden');
+  $('.sign-in-window').addClass('hidden');
+  $('.change-password-window').addClass('hidden');
+  $('.user-toggle').removeClass('hidden');
+  $('.home-toggle').removeClass('hidden');
+  $('.changePassword').removeClass('hidden');
+  $('.signOut').removeClass('hidden');
+  $('.user-email').text(data.user.email);
+  $('.first-window').addClass('hidden');
+  console.log(data);
 };
 
 const signOutSuccess = () => {

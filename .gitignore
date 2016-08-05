@@ -1,14 +1,15 @@
 tmp
 dist
-vendor.js
+#vendor.js
 specs.js
-*bundle.js
+#*bundle.js
 _SpecRunner.html
-*.woff2
-*.woff
+#*.woff2
+#*.woff
 *.svg
-*.ttf
+#*.ttf
 *.eot
+./assets/scripts/paperAnimation/grill.js
 
 # Created by https://www.gitignore.io
 
